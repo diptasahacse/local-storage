@@ -22,6 +22,23 @@ const addPerson = (name)=>{
     localStorage.setItem("users-data",JSON.stringify(person));
     
 }
-addPerson("Dipta")
+const removePerson = (name)=>{
+    if(name in person){
+        if(person[name] > 1){
+            person[name] = person[name] - 1;
+        }
+        else{
+            delete person[name];
+        }
+        
 
-console.log(person)
+    }
+    else{
+        console.log("User Not Exist")
+
+    }
+    localStorage.setItem("users-data",JSON.stringify(person));
+    
+}
+
+
