@@ -1,6 +1,16 @@
-const person = {};
+let person = JSON.parse(localStorage.getItem('users-data')) == null ? {} : JSON.parse(localStorage.getItem('users-data'));
 const addPerson = (name)=>{
-    if(person[name]){
+    // if(person[name]){
+    //     let before =  person[name];
+    //     person[name] = before + 1;
+
+    // }
+    // else{
+    //     person[name] = 1;
+
+    // }
+
+    if(name in person){
         let before =  person[name];
         person[name] = before + 1;
 
@@ -9,11 +19,9 @@ const addPerson = (name)=>{
         person[name] = 1;
 
     }
+    localStorage.setItem("users-data",JSON.stringify(person));
     
 }
-const UserArr = ["Dipta","Keya","Porshi","Porosh","Pollob","Keya","Modi","Porshi","Dipta",'Porshi'];
+addPerson("Dipta")
 
-for (const iterator of UserArr) {
-    addPerson(iterator);
-}
 console.log(person)
